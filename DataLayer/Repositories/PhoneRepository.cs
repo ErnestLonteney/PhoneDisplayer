@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhoneDisplayer.Business.Models;
+using PhoneDisplayer.DataLayer.Entities;
 using System.Windows;
 
-namespace PhoneDisplayer.DataLayer
+namespace PhoneDisplayer.DataLayer.Repositories
 {
-    public  class PhoneRepository
+    public class PhoneRepository
     {
         private readonly PhoneContex context;
         public PhoneRepository()
         {
-            context = new PhoneContex();    
+            context = new PhoneContex();
         }
 
         public IEnumerable<Phone> GetAll() => context.Phones.Include(p => p.Company).ToList();
@@ -44,7 +45,7 @@ namespace PhoneDisplayer.DataLayer
 
         public int RemoveById(int phoneId)
         {
-            int res = 0; 
+            int res = 0;
             var phoneForRemoving = context.Phones.Find(phoneId);
             if (phoneForRemoving == null)
                 return res;
@@ -53,7 +54,7 @@ namespace PhoneDisplayer.DataLayer
 
             try
             {
-               res = context.SaveChanges();
+                res = context.SaveChanges();
             }
             catch (Exception)
             {

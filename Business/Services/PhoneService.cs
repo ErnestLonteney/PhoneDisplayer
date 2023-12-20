@@ -1,19 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PhoneDisplayer.Business.Models;
-using PhoneDisplayer.DataLayer;
+using PhoneDisplayer.DataLayer.Repositories;
 using System.Windows;
 
-namespace PhoneDisplayer.Business
+namespace PhoneDisplayer.Business.Services
 {
     public class PhoneService
     {
         private readonly PhoneRepository repository;
         public PhoneService()
         {
-            repository = new PhoneRepository();     
+            repository = new PhoneRepository();
         }
-        
-        public IEnumerable<PhoneModel> GetAllPhones()
+
+        public List<PhoneModel> GetAllPhones()
         {
             var phonesFromDB = repository.GetAll();
 
@@ -23,20 +23,20 @@ namespace PhoneDisplayer.Business
                 Company = p.Company?.Name ?? "EMPTY",
                 Id = p.Id,
                 Price = p.Price,
-            });
+            }).ToList();
         }
 
-        public IEnumerable<PhoneModel> GetAllPhonesByCompany(string companyName)
+        public List<PhoneModel> GetAllPhonesByCompany(string companyName)
         {
             var phonesFromDB = repository.GetPhonesByCompanyName(companyName);
-                
+
             return phonesFromDB.Select(p => new PhoneModel
             {
                 Name = p.Name,
                 Company = p.Company?.Name ?? "EMPTY",
                 Id = p.Id,
                 Price = p.Price,
-            });
+            }).ToList();
         }
 
         public void RemovePhoneById(int phoneId)
@@ -45,7 +45,7 @@ namespace PhoneDisplayer.Business
             {
                 repository.RemoveById(phoneId);
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 throw;
             }

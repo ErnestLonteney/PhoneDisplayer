@@ -1,0 +1,17 @@
+﻿<Window x:Class="PhoneDisplayer.AddPhoneWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhoneDisplayer"
+        mc:Ignorable="d"
+        Title="AddPhone" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Height="250" Width="400">
+    <StackPanel Background="AliceBlue" Loaded="StackPanel_Loaded">
+        <ComboBox Name="cbCompanies" DisplayMemberPath="Name"/>
+        <Label Content="Model"/>
+        <TextBox x:Name="tbModel"/>
+        <Label Content="Price"/>
+        <TextBox x:Name="tbPrice"/>
+        <Button Margin="20" Content="Save" Click="Button_Click"/>
+    </StackPanel>
+</Window>

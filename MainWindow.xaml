@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhoneDisplayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel Loaded="StackPanel_Loaded">
-        <ComboBox></ComboBox>
+        Title="PhoneDisplayer" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+    <StackPanel Background="AliceBlue" Loaded="StackPanel_Loaded">
+        <ComboBox Name="cbFilter" DisplayMemberPath="Name" SelectionChanged="cbFilter_SelectionChanged"></ComboBox>
         <DataGrid Name="dgMain" Height="300"  />
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Width="200" Margin="10" Content="Add"/>
-            <Button  Width="200" Margin="10" Content="Delete"/>
+            <Button Width="200" Height="40" Margin="10" Content="Add" Click="Button_Click"/>
+            <Button  Width="200" Margin="10" Content="Delete" Click="Button_Click_1"/>
         </StackPanel>
     </StackPanel>
 </Window>

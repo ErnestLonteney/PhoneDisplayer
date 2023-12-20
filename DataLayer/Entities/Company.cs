@@ -1,4 +1,4 @@
-﻿namespace PhoneDisplayer.DataLayer
+﻿namespace PhoneDisplayer.DataLayer.Entities
 {
     public class Company
     {
